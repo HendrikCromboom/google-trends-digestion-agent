@@ -11,5 +11,8 @@ A project that researches based on google trends. There is no clear goal here, j
 
 ## Components
 
+`npm init playwright@latest`
+
 - Google trends scraper (Use at your own discretion, this scraper was built for research only, if planning to use a similar setup in a competitive or commercial enviroment consider applying for a Google Trends API key)
+
 - Agent

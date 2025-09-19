@@ -1,0 +1,14 @@
+{
+  "name": "google-trends-digestion-agent",
+  "version": "1.0.0",
+  "description": "A project that researches based on google trends. There is no clear goal here, just want to see how competitive a take of google trends data I can get in my feed on a daily.",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.5.2"
+  }
+}
