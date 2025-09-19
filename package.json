@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "A project that researches based on google trends. There is no clear goal here, just want to see how competitive a take of google trends data I can get in my feed on a daily.",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "ts-node --esm src/scraper.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.55.0",
-    "@types/node": "^24.5.2"
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5"
+  },
+  "dependencies": {
+    "node-html-parser": "^7.0.1",
+    "ts-node": "^10.9.2"
   }
 }
