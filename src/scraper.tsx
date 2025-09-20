@@ -1,6 +1,7 @@
 import { chromium, Browser, BrowserContext, Page } from 'playwright';
 import * as fs from 'fs';
 import { parse } from 'node-html-parser';
+import { cleanTrendsDataArray, convertCleanedDataToCSV, CleanedTrendData } from './data-cleaner';
 
 async function run(): Promise<void> {
   /**
@@ -59,15 +60,13 @@ async function run(): Promise<void> {
     }
   }
   
-  // Define the column titles for the CSV
-  const titles: string[] = ['trends', 'started', 'volume'];
+  // Clean the extracted data
+  const cleanedData: CleanedTrendData[] = cleanTrendsDataArray(data);
   
-  // Create CSV content
-  let csvContent = titles.join(',') + '\n';
-  data.forEach(row => {
-    csvContent += row.map(field => `"${field.replace(/"/g, '""')}"`).join(',') + '\n';
-  });
-
+  // Create CSV content from cleaned data
+  const csvContent: string = convertCleanedDataToCSV(cleanedData);
+  
+  // Create timestamp for filename
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -79,14 +78,21 @@ async function run(): Promise<void> {
   const timestamp = `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
   const filename = `trending_topics_${timestamp}.csv`;
   
+  // Write the extracted data to a CSV file with timestamp
   fs.writeFileSync(filename, csvContent, 'utf8');
+  console.log(`Data saved to: ${filename}`);
   
+  // Close the browser context and browser
   await context.close();
   await browser.close();
 }
 
 async function main(): Promise<void> {
+  /**
+   * Runs the Playwright script.
+   */
   await run();
 }
 
+// Execute the main function
 main().catch(console.error);
