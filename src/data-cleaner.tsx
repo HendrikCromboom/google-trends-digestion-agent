@@ -138,7 +138,7 @@ function cleanTrendsDataArray(rawDataArray: (string | string[])[]): CleanedTrend
   });
 }
 
-// Function to convert cleaned data back to CSV format
+// Convert to CSV format
 function convertCleanedDataToCSV(cleanedDataArray: CleanedTrendData[]): string {
   const headers: string[] = ['Trend Name', 'Search Volume', 'Time Ago', 'Growth %', 'Related Searches'];
   let csv: string = headers.join(',') + '\n';
@@ -157,25 +157,9 @@ function convertCleanedDataToCSV(cleanedDataArray: CleanedTrendData[]): string {
   return csv;
 }
 
-// Export functions for use in other modules
 export { 
   CleanedTrendData, 
   cleanTrendsData, 
   cleanTrendsDataArray, 
   convertCleanedDataToCSV 
 };
-
-// Example usage:
-const rawData: string = `"brett james","200K+ searches·trending_upActive·20h ago","200K+ searches·","200K+ searches","·","trending_upActive","Active","·20h ago","·","20h ago","200K+arrow_upward1,000%","200K+","arrow_upward1,000%","1,000%","20 hours ago","trending_upActive","trending_upActive","Active","brett james plane crashbrett james plane crashSearch termquery_statsExplorebrett james songsbrett james songsSearch termquery_statsExplore+ 9 more","brett james plane crashbrett james plane crashSearch termquery_statsExplore","brett james plane crashbrett james plane crashSearch termquery_statsExplore","brett james plane crashSearch termquery_statsExplore","brett james plane crashSearch termquery_statsExplore","brett james plane crashSearch termquery_statsExplore","brett james plane crashSearch termquery_statsExplore","brett james plane crashSearch termquery_statsExplore","brett james plane crashSearch term","brett james plane crashSearch term","brett james plane crash","Search term","query_statsExplore","query_statsExplore","query_statsExplore","query_statsExplore","brett james songsbrett james songsSearch termquery_statsExplore","brett james songsbrett james songsSearch termquery_statsExplore","brett james songsSearch termquery_statsExplore","brett james songsSearch termquery_statsExplore","brett james songsSearch termquery_statsExplore","brett james songsSearch termquery_statsExplore","brett james songsSearch termquery_statsExplore","brett james songsSearch term","brett james songsSearch term","brett james songs","Search term","query_statsExplore","query_statsExplore","query_statsExplore","query_statsExplore","more_vertMore actionschecklistSelectquery_statsExploreSearch it","more_vertMore actions","More actions","checklistSelectquery_statsExploreSearch it","checklistSelectquery_statsExploreSearch it","checklistSelectquery_statsExploreSearch it"`;
-
-const cleaned: CleanedTrendData = cleanTrendsData(rawData);
-console.log('Cleaned data:', cleaned);
-
-// Output:
-// {
-//   trendName: 'brett james',
-//   searchVolume: '200K+',
-//   timeAgo: '20h ago', 
-//   growthPercentage: '1,000%',
-//   relatedSearches: ['plane crash', 'songs']
-// }
