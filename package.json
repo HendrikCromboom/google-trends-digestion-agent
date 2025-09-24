@@ -11,10 +11,15 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.55.0",
+    "@types/dotenv": "^8.2.3",
     "@types/node": "^24.5.2",
     "tsx": "^4.20.5"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@langchain/core": "^0.3.77",
+    "@langchain/langgraph": "^0.4.9",
+    "dotenv": "^17.2.2",
     "node-html-parser": "^7.0.1",
     "ts-node": "^10.9.2"
   }
